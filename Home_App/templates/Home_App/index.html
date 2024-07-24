@@ -1,0 +1,356 @@
+﻿{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ویندومال, نصب پنجره دوجداره , خرید پنجره دوجداره ">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="خرید پنجره دوجداره">
+    <meta name="author" content="Devcrud">
+    <title>خرید پنجره دوجداره</title>
+    <link rel="icon" type="image/x-icon" href="{% static "Home_App/imgs/W.ico" %}">
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static "Home_App/vendors/themify-icons/css/themify-icons.css" %}">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="{% static "Home_App/css/meyawo.css" %}">
+    <link rel="stylesheet" href="{% static "Home_App/css/rap.css" %}">
+    <link rel="stylesheet" href="{% static "Home_App/fonts/arabtype.ttf" %}">
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="http://127.0.0.1:8000/">Window Mall</a>         
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="http://127.0.0.1:8000/" style="font-family:'Arabic Typesetting';">صفحه اصلی</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="#about" style="font-family:'Arabic Typesetting';">مزایا یو پی وی سی</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="/CV" style="font-family:'Arabic Typesetting';">نمونه های نصب</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="/Measurement" style="font-family:'Arabic Typesetting';">درخواست اندازه گیری</a>
+                </li>                       
+                <li class="item ml-md-3">
+                    <a href="#contact" class="btn btn-primary" style="font-family:'Arabic Typesetting';">درخواست مشاوره</a>
+                </li>
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>          
+    </nav><!-- End of Page Navbar -->
+   
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                {% for i in FirstShow_info %}
+                <span class="up" style="font-family:'Arabic Typesetting';">{{ i.line_1 }}</span>  
+               
+                <span class="down"style="font-family:'Arabic Typesetting';">{{ i.line_2 }}</span>
+            </h1>
+            <h6 style="color:black">{{ i.line_3 }}</h6>
+                {% endfor %}
+            <button class="btn btn-primary" type="button" href="#contact">درخواست مشاوره</button>            
+        </div>              
+    </header><!-- end of page header -->
+
+
+
+    <!-- about section -->
+    <section class="section pt-0" id="about">
+        <!-- container -->
+        <div class="container text-center">
+            <!-- about wrapper -->
+
+            <div class="about">
+                <div class="about-img-holder">
+                    {% for i in Manager_info %}
+                        {% if i.desktop_photo == "Reza" %}
+                            <img src="{% static "Home_App/imgs/reza3.png" %}" class="about-img" alt="">
+                        {% elif i.desktop_photo == "Defualt" %}
+                            <img src="{% static "Home_App/imgs/man.png" %}" class="about-img" alt="">                
+                        {% endif %}
+                    {% endfor %}    
+                        </div>
+                <div class="about-caption">
+                    <p class="section-subtitle"> چرا پنجره "یو پی وی سی" داشته باشیم؟ </p>
+                    <h2 class="section-title mb-3">Window Mall</h2>
+                    <pre style="font-family:'Arabic Typesetting';text-align:right;">{% for i in WhyUPVC_info %}
+                        {{ i.reason }} {% endfor %}</pre>
+                    <button class="btn-rounded btn btn-outline-primary mt-4" type="button" href="#contact">درخواست مشاوره</button>
+                </div>              
+            </div><!-- end of about wrapper -->
+        </div><!-- end of container -->
+    </section> <!-- end of about section -->
+   
+    <!-- service section -->
+    {% for i in WhyChoose_info %}
+    <section class="section" id="service">
+        <div class="container text-center">
+            <p class="section-subtitle">چرا انتخابمان ویندو مال است؟</p>
+            <h6 class="section-title mb-6">Window Mall</h6>
+            <!-- row -->
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static "Home_App/imgs/pencil-case.svg" %}" alt="" class="icon">
+                            <h6 class="title">{{ i.title_1 }}</h6>
+                            <p class="subtitle" style="font-size:17px;font-family:'Arabic Typesetting';">{{ i.information_1 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static "Home_App/imgs/responsive.svg" %}" alt="" class="icon">
+                            <h6 class="title">{{ i.title_2 }}</h6>
+                            <p class="subtitle" style="font-size:17px;font-family:'Arabic Typesetting';">{{ i.information_2 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static "Home_App/imgs/toolbox.svg" %}" alt="" class="icon">
+                            <h6 class="title">{{ i.title_3 }}</h6>
+                            <p class="subtitle" style="font-size:17px;font-family:'Arabic Typesetting';">{{ i.information_3 }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="service-card">
+                        <div class="body">
+                            <img src="{% static "Home_App/imgs/analytics.svg" %}" alt="" class="icon">
+                            <h6 class="title">{{ i.title_4 }}</h6>
+                            <p class="subtitle" style="font-size:17px;font-family:'Arabic Typesetting';">{{ i.information_4 }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- end of row -->
+        </div>
+    </section><!-- end of service section -->
+    {% endfor %}
+
+    <!-- pricing section -->
+    <section class="section" id="pricing">
+        <div class="container text-center">
+            <p class="section-subtitle">نکاتی قبل از خرید</p>
+            <h6 class="section-title mb-6">Window Mall</h6>
+            <!-- row -->
+            <div class="pricing-wrapper">
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <img class="pricing-card-icon" src="{% static "Home_App/imgs/scooter.svg" %}" alt="">
+                    </div>
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title"style="font-family:'Arabic Typesetting';font-size:60px;">مراحل سفارش</h6>
+                        <div class="pricing-card-list" style="text-align: right;">
+                            {% for i in BeforeBuyOrder_info %}
+                            {{ i.reason }}<br>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="pricing-card-footer">
+                        
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <img class="pricing-card-icon" src="{% static "Home_App/imgs/shipped.svg" %}" alt="">
+                    </div>
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title"style="font-family:'Arabic Typesetting';font-size:60px;">چرا ویندو مال؟</h6>
+                        <div class="pricing-card-list" style="text-align: right;">
+                            {% for i in BeforeBuyWhyWindowmall_info %}
+                            {{ i.reason }}<br>
+                            {% endfor %}</div>
+                    </div>
+                    <div class="pricing-card-footer">
+                        
+                    </div>
+                </div>
+                <div class="pricing-card">
+                    <div class="pricing-card-header">
+                        <img class="pricing-card-icon" src="{% static "Home_App/imgs/startup.svg" %}" alt="">
+                    </div>
+                    <div class="pricing-card-body">
+                        <h6 class="pricing-card-title"style="font-family:'Arabic Typesetting';font-size:60px;">قیمت</h6>
+                        <div class="pricing-card-list" style="text-align: right;"> : قیمت نهایی خرید پنجره حاصل مراحل زیر است
+                            {% for i in BeforeBuyCost_info %}
+                            {{ i.reason }}<br>
+                            {% endfor %}</div>
+                    </div>
+                    <div class="pricing-card-footer">
+                       
+                    </div>
+                </div>
+
+            </div><!-- end of pricing wrapper -->
+        </div> <!-- end of container -->
+    </section><!-- end of pricing section -->
+
+    <!-- section -->
+    <section class="section-sm bg-primary">
+        <!-- container -->
+        <div class="container text-center text-sm-left">
+            <!-- row -->
+            <div class="row align-items-center">
+                <div class="col-sm offset-md-1 mb-4 mb-md-0">
+                    <h6 class="title text-light" style="text-align: right;">Window Mall</h6>
+                    <p class="m-0 text-light" id="tell" style="text-align: right;">  برای ثبت سفارش یا مشاوره رایگان روی دکمه درخواست مشاوره کلیک کنید</p>
+                </div>
+                <div class="col-sm offset-sm-2 offset-md-3" >
+                    <button class="btn btn-lg my-font btn-light rounded" type="button" href="#contact">درخواست مشاوره</button> 
+                </div>
+            </div> <!-- end of row -->
+        </div> <!-- end of container -->
+    </section> <!-- end of section -->
+
+    <!-- testimonial section -->
+    <section class="section" id="testmonial">
+        <div class="container text-center">
+            <p class="section-subtitle">مدیرعامل شرکت ویندو مال</p>
+            <h6 class="section-title mb-6">Window Mall</h6>
+<!-- row -->
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="testimonial-card">
+            <div class="testimonial-card-img-holder">
+                {% for i in Manager_info %}
+                <img src="{{ i.Profile_img.url }}" class="testimonial-card-img" alt="">
+            </div>
+            <div class="testimonial-card-body">
+                <p class="testimonial-card-subtitle" style="font-family:'Arabic Typesetting';font-size:25px;text-align: right;">
+                    {{ i.info_about_your_work }}
+                    <br>
+                    تلفن تماس : {{ i.Phone_Number }}
+                    <br><br>
+                    {% for x in SocialMedia_info %}
+                    {% if x.Social_Media == "اینستاگرام" %}
+                        <a href="{{ i.Link }}" class="link"><i class="ti-instagram"></i></a> : اینستاگرام
+                        <br>
+                    {% elif x.Social_Media == "تلگرام" %}
+                        <a href="{{ i.Link }}" class="link"><i class="ti-tablet"></i></a> : تلگرام
+                        <br>
+                    {% elif x.Social_Media == "ایمیل" %}
+                        <a href="{{ i.Link }}" class="link"><i class="ti-email"></i></a> : ایمیل
+                        <br>
+                    {% elif x.Social_Media == "لیندکدین" %}
+                        <a href="{{ i.Link }}" class="link"><i class="ti-linkedin"></i></a> : لیندکدین
+                        <br>
+                    {% elif x.Social_Media == "توییتر" %}
+                        <a href="{{ i.Link }}" class="link"><i class="ti-text"></i></a> : توییتر
+                        <br>
+                    {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                </p>
+                <h6 class="testimonial-card-title" style="font-family:'Arabic Typesetting';font-size:35px; text-align: right;">رضا فریادرس</h6>
+            </div>
+        </div>
+    </div>
+</div>
+        </div> <!-- end of container -->
+    </section> <!-- end of testimonial section -->
+
+<!-- contact section -->
+<section class="section" id="contact">
+    <div class="container text-center">
+        <p class="section-subtitle">درخواست مشاوره از ویندو مال</p>
+        <h6 class="section-title mb-5">Window Mall</h6>
+        <!-- contact form -->
+        <form action="" id="contactForm" class="contact-form col-md-10 col-lg-8 m-auto" method="post">
+            {% csrf_token %}
+            <div class="form-row">
+
+                <div class="form-group col-sm-6">
+                    <input type="text" id="name" class="form-control" placeholder=": نام و نام خانوادگی" required style="text-align: right;" name="Full_Name">
+                </div>
+
+                <div class="form-group col-sm-6">
+                    <input type="phone" id="phone" class="form-control" placeholder="شماره تماس (مثال: 0912)" required style="text-align: right;" name="Phone_Number">
+                </div>
+
+                <div class="form-group col-sm-12">
+                    <textarea id="comment" rows="6" class="form-control" placeholder="توضیحات (اختیاری)" style="text-align: right;" name="comment"></textarea>
+                </div>
+                
+                <div class="form-group col-sm-12 mt-3">
+                    <input type="submit" value="ارسال درخواست" class="btn btn-outline-primary rounded">
+                </div>
+            
+            </div>
+        </form><!-- end of contact form -->
+    </div><!-- end of container -->
+</section><!-- end of contact section -->
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">       
+            <p class="mb-0" style="text-align: left;">Created By : <b><a href="http://www.yazdanjafari.ir">Yazdan Jafari</a></b></p>
+        </footer>
+    </div> <!-- end of page footer -->
+	
+	<!-- core  -->
+    <script src="{% static "Home_App/vendors/jquery/jquery-3.4.1.js" %}"></script>
+    <script src="{% static "Home_App/vendors/bootstrap/bootstrap.bundle.js" %}"></script>
+
+    <!-- bootstrap 3 affix -->
+	<script src="{% static "Home_App/vendors/bootstrap/bootstrap.affix.js" %}"></script>
+
+    <!-- Meyawo js -->
+    <script src="{% static "Home_App/js/meyawo.js" %}"></script>
+   
+    <script>
+        document.querySelectorAll('button[href="#contact"]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var phone = document.getElementById('phone').value.trim();
+            var name = document.getElementById('name').value.trim();
+            var comment = document.getElementById('comment').value.trim();
+
+            if (phone !== "" && name !== "") {
+                showNotification("ممنون که به ما اعتماد کردید. مشاوران ما به زودی با شما تماس خواهند گرفت");
+                document.getElementById('contactForm').submit(); // ارسال فرم
+            } else {
+                showNotification("شما تمام فیلدهای ضروری ارسال نکرده‌اید");
+            }
+        });
+
+        function showNotification(message) {
+            var notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000); // نوتیفیکیشن پس از 3 ثانیه محو می‌شود
+        }        
+
+    </script>
+
+</body>
+</html>

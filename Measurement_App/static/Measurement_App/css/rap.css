@@ -1,0 +1,56 @@
+.hub {
+    font-family:'Arabic Typesetting';
+    
+}
+p {
+    font-size: calc(19px + (15 - 13) * ((100vw - 300px) / (1300 - 300)));
+    font-weight: 100;
+    opacity: 13;
+    color: #111;
+    letter-spacing: 0.6px;
+}
+pre {
+    display: block;
+    font-size: 106.5%;
+    color: #212529;
+}
+pre {
+    border: 2px solid #dee2e6;
+    padding: 15px;
+    border-radius: 1.25rem;
+    background: #f8f9fa;
+}
+.service-card {
+    position: relative;
+    min-height: 260px;
+    border: 1px solid #dee2e6;
+    overflow: hidden;
+    border-radius: 3px;
+}
+img {
+    /* vertical-align: middle; */
+    /* border-style: none; */
+    padding-top: 20PX;
+}
+.custom-navbar.affix .nav .item .link {
+    color: #000102;
+}
+element.style {
+    font-size: 18px;
+}
+element.style !important{
+    font-size: 18px;
+}
+/*.pricing-wrapper .pricing-card-list p {
+    margin-bottom: 12px;
+    font-weight: 500;
+    opacity: 94.6;
+    /* font-family: Arabic Typesetting; */
+    /* font-size: 20px; */
+}
+/**, *::before, *::after {
+    box-sizing: border-box;
+    margin-bottom: 12px;
+    font-weight: 500;
+    opacity: 94.6;
+}*/

@@ -1,0 +1,243 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ویندومال, نصب پنجره دوجداره , خرید پنجره دوجداره ">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="خرید پنجره دوجداره">
+    <meta name="author" content="Devcrud">
+    <title>خرید پنجره دوجداره</title>
+    <link rel="icon" type="image/x-icon" href="{% static "CV_App/imgs/W.ico" %}">
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static "CV_App/vendors/themify-icons/css/themify-icons.css" %}">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="{% static "CV_App/css/meyawo.css" %}">
+    <link rel="stylesheet" href="{% static "CV_App/css/rap.css" %}">
+    <link rel="stylesheet" href="{% static "CV_App/fonts/arabtype.ttf" %}">
+        
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="http://127.0.0.1:8000/">Window Mall</a>         
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="http://127.0.0.1:8000/" style="font-family:'Arabic Typesetting';">صفحه اصلی</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="http://127.0.0.1:8000/" style="font-family:'Arabic Typesetting';">مزایا یو پی وی سی</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="/CV" style="font-family:'Arabic Typesetting';">نمونه های نصب</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="/Measurement" style="font-family:'Arabic Typesetting';">درخواست اندازه گیری</a>
+                </li>                       
+                <li class="item ml-md-3">
+                    <a href="http://127.0.0.1:8000/" class="btn btn-primary" style="font-family:'Arabic Typesetting';">درخواست مشاوره</a>
+                </li>
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>          
+    </nav><!-- End of Page Navbar -->
+   
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                {% for i in FirstShow_info %}
+                <span class="up" style="font-family:'Arabic Typesetting';">{{ i.line_1 }}</span>  
+               
+                <span class="down"style="font-family:'Arabic Typesetting';">{{ i.line_2 }}</span>
+            </h1>
+            <h6 style="color:black">{{ i.line_3 }}</h6>
+                {% endfor %}
+        </div>              
+    </header><!-- end of page header -->
+
+<!-- portfolio section -->
+<section class="section" id="portfolio">
+    <div class="container text-center">
+        <p class="section-subtitle">نمونه های نصب</p>
+        <h6 class="section-title mb-6">Window Mall</h6>
+        <div class="row">
+
+            {% for i in Installed_info %}
+            <div class="col-md-4">
+                <a href="#" class="portfolio-card">
+                    <img src="{{ i.Installed_Img.url }}" class="portfolio-card-img" alt="پنجره طرح چوب">
+                    <span class="portfolio-card-overlay">
+                        <span class="portfolio-card-caption">
+                            <h4>Window Mall</h4>
+                            <p class="font-weight-normal">{{ i.title }}</p>
+                        </span>
+                    </span>
+                </a>
+            </div>
+            {% endfor %}
+
+        </div>
+    </div><!-- end of container -->
+</section> <!-- end of portfolio section -->
+
+<hr>
+
+<!-- testimonial section -->
+<section class="section" id="testmonial">
+    <div class="container text-center">
+        <p class="section-subtitle">نظرات ارزشمند شما</p>
+        <h6 class="section-title mb-6">Window Mall</h6>
+
+        <!-- row -->
+        <div class="row">
+
+            {% for i in Comment_info %}
+                {% if i.Active == True %}
+                    <div class="col-md-6">
+                        <div class="testimonial-card">
+                            <div class="testimonial-card-img-holder">
+                                {% if i.Profile_img.url != "None" %}
+                                    <img src="{{ i.Profile_img.url }}" class="testimonial-card-img" alt="costumer">                        
+                                {% else %}
+                                    <img src="{% static "CV_App/imgs/user5.png" %}" class="testimonial-card-img" alt="costumer">
+                                {% endif %}
+                            </div>
+                            <div class="testimonial-card-body">
+                                <p class="testimonial-card-subtitle text-right">{{ i.description }}</p>
+                                <h6 class="testimonial-card-title text-right">{{ i.Full_Name }}</h6>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+        </div>
+    </div> <!-- end of container -->
+</section> <!-- end of testimonial section -->
+
+
+<!-- contact section -->
+<section class="section" id="contact">
+    <div class="container text-center">
+        <p class="section-subtitle">: ارسال نظر شما</p>
+        <p class="section-subtitle" style="size: 20px;"></p>
+        <h6 class="section-title mb-5">Window Mall</h6>
+        <!-- contact form -->
+        <form action="" id="contactForm" class="contact-form col-md-10 col-lg-8 m-auto" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="form-row">
+                
+                <div class="form-group col-sm-12">
+                    <input type="file" class="form-control-file" id="Profile_img" name="Profile_img" style="display: none;" accept="image/*" onchange="updateFileName(this)">
+                    <label for="Profile_img" class="btn btn-outline-primary rounded upload-button">انتخاب عکس من (اختیاری)</label>
+                    <span id="file-name" style="margin-right: 10px;"></span>
+                </div>
+        
+                <div class="form-group col-sm-6">
+                    <input type="text" class="form-control" id="Full_Name" placeholder=": نام و نام خانوادگی" required style="text-align: right;" name="Full_Name">                 
+                </div>                
+                
+                <div class="form-group col-sm-6">
+                    <input type="phone" class="form-control" id="Phone_Number" placeholder="شماره تماس ( مثال : 0912 )" required style="text-align: right;" name="Phone_Number">                 
+                </div>
+        
+                <div class="form-group col-sm-12">
+                    <textarea name="comment" id="description" rows="6" class="form-control" placeholder=": توضیحات" style="text-align: right;" name="description" required></textarea>
+                </div>
+        
+                <div class="form-group col-sm-12 mt-3">
+                    <input type="submit" value="ارسال" class="btn btn-outline-primary rounded">                  
+                </div>
+            </div>  
+        </form>        
+    </div><!-- end of container -->
+</section><!-- end of contact section -->
+
+<!-- Notification div -->
+<div id="notification" class="notification"></div>
+
+
+
+
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">       
+            <p class="mb-0" style="text-align: left;">Created By : <b><a href="http://www.yazdanjafari.ir">Yazdan Jafari</a></b></p>
+        </footer>
+    </div> <!-- end of page footer -->
+	
+	<!-- core  -->
+    <script src="{% static "CV_App/vendors/jquery/jquery-3.4.1.js" %}"></script>
+    <script src="{% static "CV_App/vendors/bootstrap/bootstrap.bundle.js" %}"></script>
+
+    <!-- bootstrap 3 affix -->
+	<script src="{% static "CV_App/vendors/bootstrap/bootstrap.affix.js" %}"></script>
+
+    <!-- Meyawo js -->
+    <script src="{% static "CV_App/js/meyawo.js" %}"></script>
+   
+    <script>
+        document.querySelectorAll('button[href="#contact"]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const portfolioLinks = document.querySelectorAll('.portfolio-card');
+    
+            portfolioLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                });
+            });
+        });     
+        
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // جلوگیری از ارسال فوری فرم
+            
+            var name = document.getElementById('Full_Name').value.trim();
+            var phone = document.getElementById('Phone_Number').value.trim();
+            var comment = document.getElementById('description').value.trim();
+            
+            if (name === "" || phone === "" || comment === "") {
+                showNotification("شما تمام فیلد ها را ارسال نکردید");
+            } else {
+                showNotification("ممنون که نظر خود را با ما به اشتراک گذاشتید. در صورتی که از ما پنجره تهیه کرده باشید نظر شما نمایش داده خواهد شد", true);
+            }
+        });
+        
+        function showNotification(message, formComplete = false) {
+            var notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.classList.add('show');
+            
+            setTimeout(function() {
+                notification.classList.remove('show');
+                if (formComplete) {
+                    document.getElementById('contactForm').submit(); // ارسال فرم پس از نمایش نوتیفیکیشن
+                }
+            }, 3000); // نوتیفیکیشن پس از 3 ثانیه محو می‌شود
+        }      
+
+        function updateFileName(input) {
+            var fileName = input.files[0].name;
+            document.getElementById('file-name').textContent = fileName;
+        }
+
+    </script>
+
+</body>
+</html>

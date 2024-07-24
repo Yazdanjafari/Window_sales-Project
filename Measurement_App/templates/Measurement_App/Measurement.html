@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="ویندومال, نصب پنجره دوجداره , خرید پنجره دوجداره ">    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="خرید پنجره دوجداره">
+    <meta name="author" content="Devcrud">
+    <title>خرید پنجره دوجداره</title>
+    <link rel="icon" type="image/x-icon" href="{% static "Measurement_App/imgs/W.ico" %}">
+    <!-- font icons -->
+    <link rel="stylesheet" href="{% static "Measurement_App/vendors/themify-icons/css/themify-icons.css" %}">
+    <!-- Bootstrap + Meyawo main styles -->
+    <link rel="stylesheet" href="{% static "Measurement_App/css/meyawo.css" %}">
+    <link rel="stylesheet" href="{% static "Measurement_App/css/rap.css" %}">
+    <link rel="stylesheet" href="{% static "Measurement_App/fonts/arabtype.ttf" %}">
+        
+
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="40" id="home">
+
+    <!-- Page Navbar -->
+    <nav class="custom-navbar" data-spy="affix" data-offset-top="20">
+        <div class="container">
+            <a class="logo" href="http://127.0.0.1:8000/">Window Mall</a>         
+            <ul class="nav">
+                <li class="item">
+                    <a class="link" href="http://127.0.0.1:8000/" style="font-family:'Arabic Typesetting';">صفحه اصلی</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="http://127.0.0.1:8000/" style="font-family:'Arabic Typesetting';">مزایا یو پی وی سی</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="/CV" style="font-family:'Arabic Typesetting';">نمونه های نصب</a>
+                </li>
+                <li class="item">
+                    <a class="link" href="/Measurement" style="font-family:'Arabic Typesetting';">درخواست اندازه گیری</a>
+                </li>                
+                <li class="item ml-md-3">
+                    <a href="http://127.0.0.1:8000/" class="btn btn-primary" style="font-family:'Arabic Typesetting';">درخواست مشاوره</a>
+                </li>
+            </ul>
+            <a href="javascript:void(0)" id="nav-toggle" class="hamburger hamburger--elastic">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </a>
+        </div>          
+    </nav><!-- End of Page Navbar -->
+   
+    <!-- page header -->
+    <header id="home" class="header">
+        <div class="overlay"></div>
+        <div class="header-content container">
+            <h1 class="header-title">
+                {% for i in FirstShow_info %}
+                <span class="up" style="font-family:'Arabic Typesetting';">{{ i.line_1 }}</span>  
+               
+                <span class="down"style="font-family:'Arabic Typesetting';">{{ i.line_2 }}</span>
+            </h1>
+            <h6 style="color:black">{{ i.line_3 }}</h6>
+                {% endfor %}
+        </div>              
+    </header><!-- end of page header -->
+
+
+    <!-- contact section -->
+    <section class="section" id="contact">
+        <div class="container text-center">
+            <p class="section-subtitle">درخواست اندازه گیری برای دریافت خدمات از ویندو مال</p>
+            <h6 class="section-title mb-5">Window Mall</h6>
+            <!-- contact form -->
+            <form action="" id="contactForm" method="post" class="contact-form col-md-10 col-lg-8 m-auto">
+                {% csrf_token %}
+                <div class="form-row">
+
+                    <div class="form-group col-sm-6">
+                        <input type="text" name="Full_Name" id="Full_Name" class="form-control" placeholder=": نام و نام خانوادگی" required style="text-align: right;">                 
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <input type="tel" name="Phone_Number" id="Phone_Number" class="form-control" placeholder="شماره تماس ( مثال : 0912 )" required style="text-align: right;">                 
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <input type="number" name="door_number" id="door_number" class="form-control" placeholder=": تعداد درها" required style="text-align: right;">                 
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <input type="number" name="window_number" id="window_number" class="form-control" placeholder=": تعداد پنجره‌ها" required style="text-align: right;">                 
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <input type="number" name="Lace_number" id="Lace_number" class="form-control" placeholder=": تعداد توری‌ها" required style="text-align: right;">                 
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        <input type="text" name="Postal_ID" id="Postal_ID" class="form-control" placeholder="کد پستی (اختیاری)" style="text-align: right;">                 
+                    </div>
+
+                    <div class="form-group col-sm-12">
+                        <textarea name="Address" id="Address" rows="6" class="form-control" placeholder=": آدرس" style="text-align: right;"></textarea>
+                    </div>
+
+                    <div class="form-group col-sm-12 mt-3">
+                        <input type="submit" value="ارسال درخواست" class="btn btn-outline-primary rounded">                  
+                    </div>
+
+                </div>  
+            </form><!-- end of contact form -->
+        </div><!-- end of container -->
+    </section><!-- end of contact section -->
+
+    <!-- Notification -->
+    <div id="notification" class="notification"></div>
+
+
+
+    <!-- footer -->
+    <div class="container">
+        <footer class="footer">       
+            <p class="mb-0" style="text-align: left;">Created By : <b><a href="http://www.yazdanjafari.ir">Yazdan Jafari</a></b></p>
+        </footer>
+    </div> <!-- end of page footer -->
+	
+	<!-- core  -->
+    <script src="{% static "Measurement_App/vendors/jquery/jquery-3.4.1.js" %}"></script>
+    <script src="{% static "Measurement_App/vendors/bootstrap/bootstrap.bundle.js" %}"></script>
+
+    <!-- bootstrap 3 affix -->
+	<script src="{% static "Measurement_App/vendors/bootstrap/bootstrap.affix.js" %}"></script>
+
+    <!-- Meyawo js -->
+    <script src="{% static "Measurement_App/js/meyawo.js" %}"></script>
+   
+    <script>
+        document.querySelectorAll('button[href="#contact"]').forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('#contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });    
+        
+        document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent default form submission
+
+            var phone = document.getElementById('Phone_Number').value.trim();
+            var name = document.getElementById('Full_Name').value.trim();
+            var doorCount = document.getElementById('door_number').value.trim();
+            var windowCount = document.getElementById('window_number').value.trim();
+            var postalCode = document.getElementById('Lace_number').value.trim();
+            var grillCount = document.getElementById('Address').value.trim();
+
+            if (Full_Name !== "" && Phone_Number !== "" && door_number !== "" && window_number !== "" && Lace_number !== "" && Address !== "") {
+                showNotification("ممنون که به ما اعتماد کردید. ما به زودی با شما تماس خواهیم گرفت");
+                document.getElementById('contactForm').submit(); // ارسال فرم
+            } else {
+                showNotification("شما تمام فیلدهای ضروری را پر نکرده‌اید. لطفاً مجدداً تلاش کنید");
+            }
+        }); 
+
+        function showNotification(message) {
+            var notification = document.getElementById('notification');
+            notification.textContent = message;
+            notification.style.display = 'block';
+
+            setTimeout(function() {
+                notification.style.display = 'none';
+            }, 3000); // نوتیفیکیشن پس از 3 ثانیه محو می‌شود
+        }        
+
+    </script>
+
+</body>
+</html>
